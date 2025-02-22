@@ -7,6 +7,7 @@ import 'package:flutter_sample_app/ui/text_styles.dart';
 import 'core/presentation/components/medium_button.dart';
 import 'core/presentation/components/rating_button.dart';
 import 'core/presentation/components/small_button.dart';
+import 'core/presentation/components/two_tab.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,6 +55,13 @@ class MyHomePage extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          TwoTab(
+            labels: const ['label 1', 'label 2'],
+            selectedIndex: 0,
+            onChange: (int index) {
+              print('TowTab: $index');
+            },
+          ),
           RatingButton('text'),
           RatingButton('text', isSelected: true),
           FilterButton('text'),
