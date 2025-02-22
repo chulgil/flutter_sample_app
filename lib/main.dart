@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sample_app/core/presentation/components/big_button.dart';
 import 'package:flutter_sample_app/ui/text_styles.dart';
 
+import 'core/presentation/components/medium_button.dart';
+import 'core/presentation/components/small_button.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -46,7 +49,37 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Component', style: TextStyles.largeTextBold),
       ),
-      body: ListView(children: const [BigButton()]),
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: BigButton(
+              text: 'Big Button',
+              onPressed: () {
+                print('BigButton');
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: MediumButton(
+              text: 'Medium',
+              onPressed: () {
+                print('MediumButton');
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SmallButton(
+              text: 'Small',
+              onPressed: () {
+                print('SmallButton');
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

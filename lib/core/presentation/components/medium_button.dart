@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sample_app/ui/color_styles.dart';
 import 'package:flutter_sample_app/ui/text_styles.dart';
 
-class BigButton extends StatefulWidget {
+class MediumButton extends StatefulWidget {
   final String text;
   final void Function() onPressed;
 
-  const BigButton({super.key, required this.text, required this.onPressed});
+  const MediumButton({super.key, required this.text, required this.onPressed});
 
   @override
-  State<BigButton> createState() => _BigButtonState();
+  State<MediumButton> createState() => _MediumButtonState();
 }
 
-class _BigButtonState extends State<BigButton> {
+class _MediumButtonState extends State<MediumButton> {
   bool isPressed = false;
 
   @override
@@ -35,7 +35,7 @@ class _BigButtonState extends State<BigButton> {
         });
       },
       child: Container(
-        height: 60,
+        height: 54,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: isPressed ? ColorStyles.gray4 : ColorStyles.primary100,
