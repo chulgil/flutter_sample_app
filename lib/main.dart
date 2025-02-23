@@ -3,6 +3,7 @@ import 'package:flutter_sample_app/core/presentation/components/big_button.dart'
 import 'package:flutter_sample_app/core/presentation/components/dialogs/rating_dialog.dart';
 import 'package:flutter_sample_app/core/presentation/components/filter_button.dart';
 import 'package:flutter_sample_app/core/presentation/components/input_field.dart';
+import 'package:flutter_sample_app/core/routing/router.dart';
 import 'package:flutter_sample_app/data/repository/mock_bookmark_repository_impl.dart';
 import 'package:flutter_sample_app/data/repository/mock_recipe_repository_impl.dart';
 import 'package:flutter_sample_app/domain/model/recipe.dart';
@@ -25,27 +26,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: const ColorScheme.light(),
         scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
-      ),
-      home: FutureBuilder<List<Recipe>>(
-        future:
-            GetSavedRecipesUseCase(
-              recipeRepository: MockRecipeRepositoryImpl(),
-              bookmarkRepository: MockBookmarkRepositoryImpl(),
-            ).execute(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          final recipes = snapshot.data!;
-
-          return SavedRecipesScreen(recipes: recipes);
-        },
       ),
     );
   }
