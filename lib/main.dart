@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample_app/core/presentation/components/big_button.dart';
+import 'package:flutter_sample_app/core/presentation/components/dialogs/rating_dialog.dart';
 import 'package:flutter_sample_app/core/presentation/components/filter_button.dart';
 import 'package:flutter_sample_app/core/presentation/components/input_field.dart';
 import 'package:flutter_sample_app/ui/text_styles.dart';
@@ -55,6 +56,24 @@ class MyHomePage extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          ElevatedButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (_) {
+                  return RatingDialog(
+                    title: 'RatingDialog',
+                    score: 4,
+                    actionName: 'send',
+                    onChange: (score) {
+                      print(score);
+                    },
+                  );
+                },
+              );
+            },
+            child: const Text('RatingDialog'),
+          ),
           TwoTab(
             labels: const ['label 1', 'label 2'],
             selectedIndex: 0,
