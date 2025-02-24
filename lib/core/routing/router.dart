@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sample_app/core/routing/route_paths.dart';
 import 'package:flutter_sample_app/data/repository/mock_bookmark_repository_impl.dart';
 import 'package:flutter_sample_app/data/repository/mock_recipe_repository_impl.dart';
 import 'package:flutter_sample_app/domain/model/recipe.dart';
@@ -11,28 +12,31 @@ import 'package:flutter_sample_app/presentation/splash/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
-  initialLocation: '/splash',
+  initialLocation: RoutePaths.splash,
   routes: [
     GoRoute(
-      path: '/splash',
+      path: RoutePaths.splash,
       builder:
-          (context, state) =>
-              SplashScreen(onTapStartCooking: () => context.go('/signIn')),
+          (context, state) => SplashScreen(
+            onTapStartCooking: () => context.go(RoutePaths.signIn),
+          ),
     ),
     GoRoute(
-      path: '/signIn',
+      path: RoutePaths.signIn,
       builder:
-          (context, state) =>
-              SignInScreen(onTapSignUp: () => context.go('/signUp')),
+          (context, state) => SignInScreen(
+            onTapSignUp: () => context.go(RoutePaths.signUp),
+            onTapSignIn: () => context.go(RoutePaths.savedRecipes),
+          ),
     ),
     GoRoute(
-      path: '/signUp',
+      path: RoutePaths.signUp,
       builder:
           (context, state) =>
-              SignUpScreen(onTapSignIn: () => context.go('/signIn')),
+              SignUpScreen(onTapSignIn: () => context.go(RoutePaths.signIn)),
     ),
     GoRoute(
-      path: 'savedRecipes',
+      path: RoutePaths.savedRecipes,
       builder:
           (context, state) => FutureBuilder<List<Recipe>>(
             future:

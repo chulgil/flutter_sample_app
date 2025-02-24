@@ -5,38 +5,43 @@ import 'package:flutter_sample_app/ui/color_styles.dart';
 import 'package:flutter_sample_app/ui/text_styles.dart';
 
 class SignInScreen extends StatelessWidget {
+  final void Function() onTapSignIn;
   final void Function() onTapSignUp;
 
-  const SignInScreen({super.key, required this.onTapSignUp});
+  const SignInScreen({
+    super.key,
+    required this.onTapSignUp,
+    required this.onTapSignIn,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(30.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
-              Text('Hello', style: TextStyles.headerTextBold),
-              Text('Welcome Back!', style: TextStyles.largeTextRegular),
+              const SizedBox(height: 50),
+              Text('Hello,', style: TextStyles.headerTextBold),
+              const Text('Welcome Back!', style: TextStyles.largeTextRegular),
               const SizedBox(height: 57),
-              InputField(label: 'Email', placeHolder: 'Enter Email'),
+              const InputField(label: 'Email', placeHolder: 'Enter Email'),
               const SizedBox(height: 30),
-              InputField(
+              const InputField(
                 label: 'Enter Password',
                 placeHolder: 'Enter Password',
               ),
               const SizedBox(height: 20),
               Text(
-                'Forget Password?',
+                'Forgot Password?',
                 style: TextStyles.smallerTextRegular.copyWith(
                   color: ColorStyles.secondary100,
                 ),
               ),
               const SizedBox(height: 25),
-              BigButton(text: 'Sign In', onPressed: () {}),
+              BigButton('Sign In', onPressed: onTapSignIn),
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -75,7 +80,7 @@ class SignInScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    "Don't have an account? ",
+                    'Don’t have an account? ',
                     style: TextStyles.smallerTextBold,
                   ),
                   GestureDetector(

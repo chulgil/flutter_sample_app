@@ -6,7 +6,7 @@ class BigButton extends StatefulWidget {
   final String text;
   final void Function() onPressed;
 
-  const BigButton({super.key, required this.text, required this.onPressed});
+  const BigButton(this.text, {super.key, required this.onPressed});
 
   @override
   State<BigButton> createState() => _BigButtonState();

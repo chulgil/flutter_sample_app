@@ -80,7 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ],
                 ),
                 const SizedBox(height: 26),
-                BigButton(onPressed: () {}, text: 'Sign Up'),
+                BigButton('Sign Up', onPressed: () {}),
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
