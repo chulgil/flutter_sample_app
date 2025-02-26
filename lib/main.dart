@@ -8,7 +8,7 @@ import 'package:flutter_sample_app/data/repository/mock_bookmark_repository_impl
 import 'package:flutter_sample_app/data/repository/mock_recipe_repository_impl.dart';
 import 'package:flutter_sample_app/domain/model/recipe.dart';
 import 'package:flutter_sample_app/domain/usecase/get_saved_recipes_use_case.dart';
-import 'package:flutter_sample_app/presentation/saved_recipes/saved_recipes_screen.dart';
+import 'package:flutter_sample_app/presentation/saved_recipes/screen/saved_recipes_screen.dart';
 import 'package:flutter_sample_app/ui/text_styles.dart';
 
 import 'core/presentation/components/medium_button.dart';
