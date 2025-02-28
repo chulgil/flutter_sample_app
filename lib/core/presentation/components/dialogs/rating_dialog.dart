@@ -40,7 +40,7 @@ class _RatingDialogState extends State<RatingDialog> {
       ),
       actions: [
         SmallButton(
-          text: 'send',
+          'send',
           textStyle: TextStyles.smallerTextRegular,
           color: ColorStyles.rating,
           onPressed: () {

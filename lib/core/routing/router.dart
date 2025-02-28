@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sample_app/core/presentation/components/search_input_field.dart';
 import 'package:flutter_sample_app/core/routing/route_paths.dart';
 import 'package:flutter_sample_app/data/repository/mock_bookmark_repository_impl.dart';
 import 'package:flutter_sample_app/data/repository/mock_recipe_repository_impl.dart';
 import 'package:flutter_sample_app/domain/model/recipe.dart';
 import 'package:flutter_sample_app/domain/usecase/get_saved_recipes_use_case.dart';
+import 'package:flutter_sample_app/main.dart';
 import 'package:flutter_sample_app/presentation/home/home_screen.dart';
 import 'package:flutter_sample_app/presentation/main/main_screen.dart';
 import 'package:flutter_sample_app/presentation/notifications/notifications_screen.dart';
@@ -19,6 +21,10 @@ import 'package:go_router/go_router.dart';
 final router = GoRouter(
   initialLocation: RoutePaths.splash,
   routes: [
+    GoRoute(
+      path: RoutePaths.test,
+      builder: (context, state) => const MyHomePage(),
+    ),
     GoRoute(
       path: RoutePaths.splash,
       builder:
@@ -59,7 +65,7 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: RoutePaths.home,
-              builder: (context, state) => const HomeScreen(),
+              builder: (context, state) => const HomeScreen(name: 'Home'),
             ),
           ],
         ),

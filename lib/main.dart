@@ -3,6 +3,7 @@ import 'package:flutter_sample_app/core/presentation/components/big_button.dart'
 import 'package:flutter_sample_app/core/presentation/components/dialogs/rating_dialog.dart';
 import 'package:flutter_sample_app/core/presentation/components/filter_button.dart';
 import 'package:flutter_sample_app/core/presentation/components/input_field.dart';
+import 'package:flutter_sample_app/core/presentation/components/search_input_field.dart';
 import 'package:flutter_sample_app/core/routing/router.dart';
 import 'package:flutter_sample_app/data/repository/mock_bookmark_repository_impl.dart';
 import 'package:flutter_sample_app/data/repository/mock_recipe_repository_impl.dart';
@@ -49,15 +50,16 @@ class MyHomePage extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          const SearchInputField(placeHolder: 'PlaceHolder'),
           ElevatedButton(
             onPressed: () {
               showDialog(
                 context: context,
                 builder: (_) {
                   return RatingDialog(
-                    title: 'RatingDialog',
-                    score: 4,
-                    actionName: 'send',
+                    title: 'Rate recipe',
+                    score: 3,
+                    actionName: 'Send',
                     onChange: (score) {
                       print(score);
                     },
@@ -71,13 +73,13 @@ class MyHomePage extends StatelessWidget {
             labels: const ['label 1', 'label 2'],
             selectedIndex: 0,
             onChange: (int index) {
-              print('TowTab: $index');
+              print('TwoTab : $index');
             },
           ),
-          RatingButton('text'),
-          RatingButton('text', isSelected: true),
-          FilterButton('text'),
-          FilterButton('text', isSelected: true),
+          const RatingButton('text'),
+          const RatingButton('text', isSelected: true),
+          const FilterButton('text'),
+          const FilterButton('text', isSelected: true),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: BigButton(
@@ -90,24 +92,24 @@ class MyHomePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: MediumButton(
-              text: 'Medium',
+              'Medium',
               onPressed: () {
-                print('MediumButton');
+                print('Medium Button');
               },
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SmallButton(
-              text: 'Small',
+              'Small',
               onPressed: () {
-                print('SmallButton');
+                print('Small Button');
               },
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: InputField(label: 'label', placeHolder: 'placeHolder'),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: InputField(label: 'Label', placeHolder: 'PlaceHolder'),
           ),
         ],
       ),

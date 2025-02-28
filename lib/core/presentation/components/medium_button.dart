@@ -6,7 +6,7 @@ class MediumButton extends StatefulWidget {
   final String text;
   final void Function() onPressed;
 
-  const MediumButton({super.key, required this.text, required this.onPressed});
+  const MediumButton(this.text, {super.key, required this.onPressed});
 
   @override
   State<MediumButton> createState() => _MediumButtonState();
