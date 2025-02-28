@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample_app/domain/usecase/get_saved_recipes_use_case.dart';
-import 'package:flutter_sample_app/presentation/saved_recipes/saved_receipes_state.dart';
+import 'package:flutter_sample_app/presentation/saved_recipes/saved_recipes_state.dart';
 
 class SavedRecipesViewModel with ChangeNotifier {
   final GetSavedRecipesUseCase _getSavedRecipesUseCase;

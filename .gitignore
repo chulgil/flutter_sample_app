@@ -314,4 +314,9 @@ fabric.properties
 
 !/gradle/wrapper/gradle-wrapper.jar
 
+# --------------------------------------------------- #
+# 다트 자동생성 파일 제외
+# --------------------------------------------------- #
+*.freezed.dart
+
 # End of https://www.toptal.com/developers/gitignore/api/flutter,android,androidstudio,dart,darteditor,macos,gradle
