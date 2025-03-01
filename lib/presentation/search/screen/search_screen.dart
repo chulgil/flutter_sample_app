@@ -7,8 +7,9 @@ import 'package:flutter_sample_app/ui/text_styles.dart';
 
 class SearchScreen extends StatelessWidget {
   final SearchState state;
+  final void Function(String query)? onChanged;
 
-  const SearchScreen({super.key, required this.state});
+  const SearchScreen({super.key, required this.state, this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,10 @@ class SearchScreen extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: const SearchInputField(placeHolder: 'Search Recipe'),
+                  child: SearchInputField(
+                    placeHolder: 'Search Recipe',
+                    onChanged: onChanged,
+                  ),
                 ),
                 const SizedBox(width: 20),
                 Container(
@@ -49,7 +53,7 @@ class SearchScreen extends StatelessWidget {
                       : GridView.builder(
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                          crossAxisSpacing: 15
+                          crossAxisSpacing: 15,
                         ),
                         itemCount: state.recipes.length,
                         itemBuilder: (context, index) {
