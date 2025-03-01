@@ -7,12 +7,14 @@ import 'package:flutter_sample_app/data/repository/mock_recipe_repository_impl.d
 import 'package:flutter_sample_app/domain/model/recipe.dart';
 import 'package:flutter_sample_app/domain/usecase/get_saved_recipes_use_case.dart';
 import 'package:flutter_sample_app/main.dart';
-import 'package:flutter_sample_app/presentation/home/home_screen.dart';
+import 'package:flutter_sample_app/presentation/home/screen/home_root.dart';
 import 'package:flutter_sample_app/presentation/main/main_screen.dart';
 import 'package:flutter_sample_app/presentation/notifications/notifications_screen.dart';
 import 'package:flutter_sample_app/presentation/profile/profile_screen.dart';
 import 'package:flutter_sample_app/presentation/saved_recipes/screen/saved_recipes_root.dart';
 import 'package:flutter_sample_app/presentation/saved_recipes/screen/saved_recipes_screen.dart';
+import 'package:flutter_sample_app/presentation/search/screen/search_root.dart';
+import 'package:flutter_sample_app/presentation/search/screen/search_screen.dart';
 import 'package:flutter_sample_app/presentation/sign_in/sign_in_screen.dart';
 import 'package:flutter_sample_app/presentation/sign_up/sign_up_screen.dart';
 import 'package:flutter_sample_app/presentation/splash/splash_screen.dart';
@@ -46,7 +48,10 @@ final router = GoRouter(
           (context, state) =>
               SignUpScreen(onTapSignIn: () => context.go(RoutePaths.signIn)),
     ),
-
+    GoRoute(
+      path: RoutePaths.search,
+      builder: (context, state) => const SearchRoot(),
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return MainScreen(
@@ -65,7 +70,8 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: RoutePaths.home,
-              builder: (context, state) => const HomeScreen(name: 'Home'),
+              builder: (context, state) => const HomeRoot(),
+              routes: [],
             ),
           ],
         ),
