@@ -9,9 +9,9 @@ class SearchViewModel with ChangeNotifier {
 
   SearchViewModel({
     required RecentSearchRecipeRepository recentSearchRecipeRepository,
-    required SearchRecipesUseCase searchRecipesUsecase,
+    required SearchRecipesUseCase searchRecipesUseCase,
   }) : _recentSearchRecipeRepository = recentSearchRecipeRepository,
-       _searchRecipesUseCase = searchRecipesUsecase {
+       _searchRecipesUseCase = searchRecipesUseCase {
     _loadRecentSearchRecipes();
   }
 
@@ -31,17 +31,18 @@ class SearchViewModel with ChangeNotifier {
   }
 
   void searchRecipes(String query) async {
-
     _state = state.copyWith(isLoading: true);
     notifyListeners();
 
+    final recipes = await _searchRecipesUseCase.execute(query);
     _state = state.copyWith(
-      recipes: await _searchRecipesUseCase.excute(query),
+      recipes: recipes,
       isLoading: false,
+      searchTitle: 'Search Result',
+      resultsCount: '${recipes.length} results'
     );
     notifyListeners();
 
-    final results = await _searchRecipesUseCase.excute(query);
+    final results = await _searchRecipesUseCase.execute(query);
   }
-
 }
