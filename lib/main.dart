@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample_app/core/di/di_setup.dart';
 import 'package:flutter_sample_app/core/presentation/components/big_button.dart';
 import 'package:flutter_sample_app/core/presentation/components/dialogs/rating_dialog.dart';
 import 'package:flutter_sample_app/core/presentation/components/filter_button.dart';
 import 'package:flutter_sample_app/core/presentation/components/input_field.dart';
 import 'package:flutter_sample_app/core/presentation/components/search_input_field.dart';
 import 'package:flutter_sample_app/core/routing/router.dart';
-import 'package:flutter_sample_app/data/repository/mock_bookmark_repository_impl.dart';
-import 'package:flutter_sample_app/data/repository/mock_recipe_repository_impl.dart';
-import 'package:flutter_sample_app/domain/model/recipe.dart';
-import 'package:flutter_sample_app/domain/usecase/get_saved_recipes_use_case.dart';
-import 'package:flutter_sample_app/presentation/saved_recipes/screen/saved_recipes_screen.dart';
 import 'package:flutter_sample_app/ui/text_styles.dart';
 
 import 'core/presentation/components/medium_button.dart';
@@ -18,6 +14,7 @@ import 'core/presentation/components/small_button.dart';
 import 'core/presentation/components/two_tab.dart';
 
 void main() {
+  diSetup();
   runApp(const MyApp());
 }
 

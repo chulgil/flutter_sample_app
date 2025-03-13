@@ -8,8 +8,8 @@ class MockRecentSearchRecipeRepositoryImpl
   final LocalStorage _localStorage;
 
   const MockRecentSearchRecipeRepositoryImpl({
-    required LocalStorage recipeDataSource,
-  }) : _localStorage = recipeDataSource;
+    required LocalStorage localStorage,
+  }) : _localStorage = localStorage;
 
   @override
   Future<List<Recipe>> getRecentSearchRecipes() async {

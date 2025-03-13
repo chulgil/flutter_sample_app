@@ -1,4 +1,3 @@
-import 'package:flutter_sample_app/domain/model/recipe.dart';
 
 abstract interface class RecipeDataSource {
 
