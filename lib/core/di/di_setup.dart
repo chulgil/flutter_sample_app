@@ -10,6 +10,7 @@ import 'package:flutter_sample_app/domain/repository/recent_search_recipe_reposi
 import 'package:flutter_sample_app/domain/repository/recipe_repository.dart';
 import 'package:flutter_sample_app/domain/usecase/get_saved_recipes_use_case.dart';
 import 'package:flutter_sample_app/domain/usecase/search_recipes_use_case.dart';
+import 'package:flutter_sample_app/presentation/home/home_view_model.dart';
 import 'package:flutter_sample_app/presentation/saved_recipes/saved_recipes_view_model.dart';
 import 'package:flutter_sample_app/presentation/search/search_view_model.dart';
 import 'package:get_it/get_it.dart';
@@ -52,4 +53,6 @@ void diSetup() {
       searchRecipesUseCase: getIt(),
     ),
   );
+
+  getIt.registerFactory<HomeViewModel>(() => HomeViewModel());
 }
