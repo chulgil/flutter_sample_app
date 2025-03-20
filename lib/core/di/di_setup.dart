@@ -8,6 +8,8 @@ import 'package:flutter_sample_app/domain/data_source/recipe_data_source.dart';
 import 'package:flutter_sample_app/domain/repository/bookmark_repository.dart';
 import 'package:flutter_sample_app/domain/repository/recent_search_recipe_repository.dart';
 import 'package:flutter_sample_app/domain/repository/recipe_repository.dart';
+import 'package:flutter_sample_app/domain/usecase/get_categories_use_case.dart';
+import 'package:flutter_sample_app/domain/usecase/get_dishes_by_category_use_case.dart';
 import 'package:flutter_sample_app/domain/usecase/get_saved_recipes_use_case.dart';
 import 'package:flutter_sample_app/domain/usecase/search_recipes_use_case.dart';
 import 'package:flutter_sample_app/presentation/home/home_view_model.dart';
@@ -43,6 +45,11 @@ void diSetup() {
     SearchRecipesUseCase(recipeRepository: getIt(), localStorage: getIt()),
   );
 
+  getIt.registerSingleton(GetCategoriesUseCase(recipeRepository: getIt()));
+  getIt.registerSingleton(
+    GetDishesByCategoryUseCase(recipeRepository: getIt()),
+  );
+
   // viewmodel
   getIt.registerFactory<SavedRecipesViewModel>(
     () => SavedRecipesViewModel(getSavedRecipesUseCase: getIt()),
@@ -54,5 +61,10 @@ void diSetup() {
     ),
   );
 
-  getIt.registerFactory<HomeViewModel>(() => HomeViewModel());
+  getIt.registerFactory<HomeViewModel>(
+    () => HomeViewModel(
+      getCategoriesUseCase: getIt(),
+      getDishesByCategoryUseCase: getIt(),
+    ),
+  );
 }
