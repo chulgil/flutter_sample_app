@@ -1,11 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter_sample_app/domain/data_source/recipe_data_source.dart';
 import 'package:flutter_sample_app/domain/model/recipe.dart';
 import 'package:flutter_sample_app/domain/repository/recipe_repository.dart';
 
-class MockRecipeRepositoryImpl implements RecipeRepository {
+class ErrorMockRecipeRepositoryImpl implements RecipeRepository {
   final RecipeDataSource _recipeDataSource;
 
-  MockRecipeRepositoryImpl({required RecipeDataSource recipeDataSource})
+  ErrorMockRecipeRepositoryImpl({required RecipeDataSource recipeDataSource})
     : _recipeDataSource = recipeDataSource;
 
   @override
@@ -16,7 +18,7 @@ class MockRecipeRepositoryImpl implements RecipeRepository {
 
   @override
   Future<List<Recipe>> getRecipes() async {
-    final recipes = await _recipeDataSource.getRecipes();
-    return recipes.map((e) => Recipe.fromJson(e)).toList();
+    throw Exception();
+    // throw const SocketException('인터넷 문제');
   }
 }
